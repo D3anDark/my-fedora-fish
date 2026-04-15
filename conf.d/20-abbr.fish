@@ -52,3 +52,104 @@ if contains -- "$FISH_ENABLE_BAT_CAT" 1 yes true on
         abbr --add cat 'batcat --style=plain --paging=never'
     end
 end
+
+if contains -- "$FISH_ENABLE_ABBR_CONTAINERS" 1 yes true on
+    if command -q docker
+        abbr --add d docker
+        abbr --add dc 'docker compose'
+        abbr --add dcu 'docker compose up'
+        abbr --add dcd 'docker compose down'
+        abbr --add dcb 'docker compose build'
+        abbr --add dps 'docker ps'
+        abbr --add di 'docker images'
+        abbr --add dex 'docker exec -it'
+    end
+
+    if command -q podman
+        abbr --add p podman
+        abbr --add pc 'podman compose'
+        abbr --add pps 'podman ps'
+        abbr --add pi 'podman images'
+        abbr --add pex 'podman exec -it'
+    end
+end
+
+if contains -- "$FISH_ENABLE_ABBR_SYSTEMD" 1 yes true on
+    if command -q systemctl
+        abbr --add sc systemctl
+        abbr --add scs 'systemctl status'
+        abbr --add scr 'systemctl restart'
+        abbr --add scst 'systemctl start'
+        abbr --add scsp 'systemctl stop'
+        abbr --add sce 'systemctl enable --now'
+        abbr --add scu 'systemctl --user'
+    end
+
+    if command -q journalctl
+        abbr --add j journalctl
+        abbr --add ju 'journalctl -u'
+        abbr --add juf --set-cursor 'journalctl -u % --follow'
+        abbr --add jb 'journalctl -b'
+    end
+end
+
+if contains -- "$FISH_ENABLE_ABBR_JS" 1 yes true on
+    if command -q pnpm
+        abbr --add pn pnpm
+        abbr --add pni 'pnpm install'
+        abbr --add pna 'pnpm add'
+        abbr --add pnd 'pnpm add -D'
+        abbr --add pnr 'pnpm run'
+        abbr --add pnt 'pnpm test'
+        abbr --add pnx 'pnpm dlx'
+    end
+
+    if command -q npm
+        abbr --add ni 'npm install'
+        abbr --add nid 'npm install --save-dev'
+        abbr --add nr 'npm run'
+        abbr --add nt 'npm test'
+        abbr --add nx npx
+    end
+
+    if command -q bun
+        abbr --add b bun
+        abbr --add bi 'bun install'
+        abbr --add ba 'bun add'
+        abbr --add br 'bun run'
+        abbr --add bt 'bun test'
+        abbr --add bx 'bun x'
+    end
+end
+
+if contains -- "$FISH_ENABLE_ABBR_PYTHON" 1 yes true on
+    if command -q uv
+        abbr --add uva 'uv add'
+        abbr --add uvr 'uv run'
+        abbr --add uvs 'uv sync'
+        abbr --add uvx 'uvx'
+        abbr --add uvv 'uv venv'
+    end
+
+    if command -q python3
+        abbr --add py python3
+        abbr --add pym 'python3 -m'
+        abbr --add pyi 'python3 -m pip install'
+        abbr --add pyv 'python3 -m venv .venv'
+    else if command -q python
+        abbr --add py python
+        abbr --add pym 'python -m'
+        abbr --add pyi 'python -m pip install'
+        abbr --add pyv 'python -m venv .venv'
+    end
+
+    if command -q pip3
+        abbr --add ppi 'pip3 install'
+        abbr --add ppu 'pip3 uninstall'
+        abbr --add ppl 'pip3 list'
+    else if command -q pip
+        abbr --add ppi 'pip install'
+        abbr --add ppu 'pip uninstall'
+        abbr --add ppl 'pip list'
+    end
+end
