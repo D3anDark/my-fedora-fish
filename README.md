@@ -137,7 +137,7 @@ exec fish
 ### If you cloned the repo directly into `~/.config/fish`
 
 ```bash
-git clone <REPO_URL> ~/.config/fish
+git clone https://github.com/D3anDark/my-fedora-fish.git ~/.config/fish
 chsh -s "$(command -v fish)"
 exec fish
 ```
