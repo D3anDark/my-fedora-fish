@@ -1,5 +1,11 @@
 status is-interactive; or return
 
+function __abbr_last_history_item
+    echo $history[1]
+end
+
+abbr --add bangbang --position anywhere --regex '^!!$' --function __abbr_last_history_item
+
 abbr --add c clear
 abbr --add q exit
 abbr --add .. 'cd ..'
